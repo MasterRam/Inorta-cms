@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white dark:bg-dark-50 text-gray-900 dark:text-dark-900 transition-colors duration-200;
+  }
+}
+
+@layer components {
+  /* Card Component */
+  .card {
+    @apply bg-white dark:bg-dark-100 rounded-lg shadow-md p-6 border border-gray-200 dark:border-dark-200;
+  }
+
+  /* Button Components */
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-500 dark:bg-primary-500 dark:hover:bg-primary-600;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-900 focus:ring-gray-500 dark:bg-dark-200 dark:hover:bg-dark-300 dark:text-dark-900;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white focus:ring-red-500;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  /* Input Components */
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-dark-200 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-dark-100 text-gray-900 dark:text-dark-900 transition-colors;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-gray-700 dark:text-dark-700 mb-1;
+  }
+
+  /* Table Components */
+  .table {
+    @apply min-w-full divide-y divide-gray-200 dark:divide-dark-200;
+  }
+
+  .table-header {
+    @apply bg-gray-50 dark:bg-dark-200;
+  }
+
+  .table-header-cell {
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-dark-500 uppercase tracking-wider;
+  }
+
+  .table-body {
+    @apply bg-white dark:bg-dark-100 divide-y divide-gray-200 dark:divide-dark-200;
+  }
+
+  .table-cell {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-dark-900;
+  }
+
+  /* Modal Components */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 flex items-center justify-center z-50;
+  }
+
+  .modal {
+    @apply bg-white dark:bg-dark-100 rounded-lg shadow-xl max-w-md w-full mx-4 p-6;
+  }
+
+  .modal-title {
+    @apply text-xl font-semibold text-gray-900 dark:text-dark-900 mb-4;
+  }
+
+  /* Alert Components */
+  .alert {
+    @apply p-4 rounded-md mb-4;
+  }
+
+  .alert-success {
+    @apply bg-green-50 dark:bg-green-900 dark:bg-opacity-20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800;
+  }
+
+  .alert-error {
+    @apply bg-red-50 dark:bg-red-900 dark:bg-opacity-20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800;
+  }
+
+  .alert-info {
+    @apply bg-blue-50 dark:bg-blue-900 dark:bg-opacity-20 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800;
+  }
+}

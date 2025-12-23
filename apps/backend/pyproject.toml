@@ -1,0 +1,24 @@
+[project]
+name = "inorta-backend"
+version = "0.1.0"
+description = "Inorta CMS backend (FastAPI)"
+readme = "README.md"
+dependencies = [
+  "fastapi>=0.95.0",
+  "uvicorn[standard]>=0.22.0",
+  "sqlalchemy>=2.0.0",
+  "sqlmodel>=0.0.8",
+  "alembic>=1.11.0",
+  "pymysql>=1.1.0",
+  "aiomysql>=0.2.0",
+  "python-dotenv>=1.0.0",
+  "pydantic>=2.0.0",
+  "pydantic-settings>=2.0.0"
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "httpx", "pytest-asyncio"]
+
+[build-system]
+requires = ["setuptools>=65.5.1","wheel"]
+build-backend = "setuptools.build_meta"
