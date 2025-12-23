@@ -72,12 +72,16 @@ DATABASE_URL=postgresql://user:password@localhost:5432/inorta_cms
 ### 3. Run Database Migrations
 
 ```bash
-# Generate initial migration
+# Generate initial migration (if you haven't already)
 alembic revision --autogenerate -m "Initial migration"
 
+# Or use the included CMS models migration (created during development)
+# This file: alembic/versions/0001_add_cms_models.py
 # Apply migrations
 alembic upgrade head
 ```
+
+> Note: If you modify models locally, use `alembic revision --autogenerate -m "describe changes"` to create new revisions, then run `alembic upgrade head` to apply them.
 
 ### 4. Run the Server
 
