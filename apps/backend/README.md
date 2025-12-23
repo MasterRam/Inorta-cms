@@ -118,6 +118,15 @@ curl -X POST http://localhost:8000/api/users \
 
 # Get all users
 curl http://localhost:8000/api/users
+
+# Create a setting
+curl -X POST http://localhost:8000/settings \
+  -H "Content-Type: application/json" \
+  -d '{"key": "site_name", "value": "Inorta CMS"}'
+
+# Create a menu and menu item
+curl -X POST http://localhost:8000/menus -H "Content-Type: application/json" -d '{"name":"Main","location":"header"}'
+curl -X POST http://localhost:8000/menu-items -H "Content-Type: application/json" -d '{"menu_id":1,"label":"Home","url":"/"}'
 ```
 
 ## Database Configuration

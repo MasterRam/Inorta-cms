@@ -172,6 +172,114 @@ def delete_media(media_id: int, db: Session = Depends(get_db)):
     return None
 
 
+# Settings endpoints
+@router.post("/settings", response_model="inorta_backend.schemas.setting.SettingResponse", status_code=status.HTTP_201_CREATED)
+def create_setting(setting: "inorta_backend.schemas.setting.SettingCreate", db: Session = Depends(get_db)):
+    existing = __import__('inorta_backend.services.setting_service', fromlist=['SettingService']).SettingService.get_setting_by_key(db, setting.key)
+    if existing:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Setting key already exists")
+    return __import__('inorta_backend.services.setting_service', fromlist=['SettingService']).SettingService.create_setting(db, setting)
+
+
+@router.get("/settings", response_model=List["inorta_backend.schemas.setting.SettingResponse"])
+def get_settings(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    return __import__('inorta_backend.services.setting_service', fromlist=['SettingService']).SettingService.get_settings(db, skip=skip, limit=limit)
+
+
+@router.get("/settings/{setting_id}", response_model="inorta_backend.schemas.setting.SettingResponse")
+def get_setting(setting_id: int, db: Session = Depends(get_db)):
+    item = __import__('inorta_backend.services.setting_service', fromlist=['SettingService']).SettingService.get_setting_by_id(db, setting_id)
+    if not item:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Setting not found")
+    return item
+
+
+@router.put("/settings/{setting_id}", response_model="inorta_backend.schemas.setting.SettingResponse")
+def update_setting(setting_id: int, setting: "inorta_backend.schemas.setting.SettingUpdate", db: Session = Depends(get_db)):
+    updated = __import__('inorta_backend.services.setting_service', fromlist=['SettingService']).SettingService.update_setting(db, setting_id, setting)
+    if not updated:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Setting not found")
+    return updated
+
+
+@router.delete("/settings/{setting_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_setting(setting_id: int, db: Session = Depends(get_db)):
+    deleted = __import__('inorta_backend.services.setting_service', fromlist=['SettingService']).SettingService.delete_setting(db, setting_id)
+    if not deleted:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Setting not found")
+    return None
+
+
+# Menu endpoints
+@router.post("/menus", response_model="inorta_backend.schemas.menu.MenuResponse", status_code=status.HTTP_201_CREATED)
+def create_menu(menu: "inorta_backend.schemas.menu.MenuCreate", db: Session = Depends(get_db)):
+    return __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.create_menu(db, menu)
+
+
+@router.get("/menus", response_model=List["inorta_backend.schemas.menu.MenuResponse"])
+def get_menus(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    return __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.get_menus(db, skip=skip, limit=limit)
+
+
+@router.get("/menus/{menu_id}", response_model="inorta_backend.schemas.menu.MenuResponse")
+def get_menu(menu_id: int, db: Session = Depends(get_db)):
+    item = __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.get_menu_by_id(db, menu_id)
+    if not item:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Menu not found")
+    return item
+
+
+@router.put("/menus/{menu_id}", response_model="inorta_backend.schemas.menu.MenuResponse")
+def update_menu(menu_id: int, menu: "inorta_backend.schemas.menu.MenuUpdate", db: Session = Depends(get_db)):
+    updated = __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.update_menu(db, menu_id, menu)
+    if not updated:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Menu not found")
+    return updated
+
+
+@router.delete("/menus/{menu_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_menu(menu_id: int, db: Session = Depends(get_db)):
+    deleted = __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.delete_menu(db, menu_id)
+    if not deleted:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Menu not found")
+    return None
+
+
+# Menu item endpoints
+@router.post("/menu-items", response_model="inorta_backend.schemas.menu.MenuItemResponse", status_code=status.HTTP_201_CREATED)
+def create_menu_item(item: "inorta_backend.schemas.menu.MenuItemCreate", db: Session = Depends(get_db)):
+    return __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.create_menu_item(db, item)
+
+
+@router.get("/menu-items", response_model=List["inorta_backend.schemas.menu.MenuItemResponse"])
+def get_menu_items(menu_id: int, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    return __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.get_menu_items(db, menu_id, skip, limit)
+
+
+@router.get("/menu-items/{item_id}", response_model="inorta_backend.schemas.menu.MenuItemResponse")
+def get_menu_item(item_id: int, db: Session = Depends(get_db)):
+    item = __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.get_menu_item_by_id(db, item_id)
+    if not item:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Menu item not found")
+    return item
+
+
+@router.put("/menu-items/{item_id}", response_model="inorta_backend.schemas.menu.MenuItemResponse")
+def update_menu_item(item_id: int, item: "inorta_backend.schemas.menu.MenuItemUpdate", db: Session = Depends(get_db)):
+    updated = __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.update_menu_item(db, item_id, item)
+    if not updated:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Menu item not found")
+    return updated
+
+
+@router.delete("/menu-items/{item_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_menu_item(item_id: int, db: Session = Depends(get_db)):
+    deleted = __import__('inorta_backend.services.menu_service', fromlist=['MenuService']).MenuService.delete_menu_item(db, item_id)
+    if not deleted:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Menu item not found")
+    return None
+
+
 # User CRUD endpoints
 @router.post("/users", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
