@@ -126,25 +126,25 @@ colors: {
 cms-react/
 ├── src/
 │   ├── components/
-│   │   ├── Alert.jsx         ← Success/error messages
-│   │   ├── Button.jsx        ← Themed buttons
-│   │   ├── Card.jsx          ← Content containers
-│   │   ├── Input.jsx         ← Form inputs
-│   │   ├── Loading.jsx       ← Loading spinner
-│   │   ├── Modal.jsx         ← Dialog boxes
-│   │   ├── Navbar.jsx        ← Main navigation
-│   │   └── ThemeToggle.jsx   ← Theme switcher button
+│   │   ├── Alert.tsx         ← Success/error messages
+│   │   ├── Button.tsx        ← Themed buttons
+│   │   ├── Card.tsx          ← Content containers
+│   │   ├── Input.tsx         ← Form inputs
+│   │   ├── Loading.tsx       ← Loading spinner
+│   │   ├── Modal.tsx         ← Dialog boxes
+│   │   ├── Navbar.tsx        ← Main navigation
+│   │   └── ThemeToggle.tsx   ← Theme switcher button
 │   ├── context/
-│   │   └── ThemeContext.jsx  ← Theme state management
+│   │   └── ThemeContext.tsx  ← Theme state management
 │   ├── pages/
-│   │   ├── Dashboard.jsx     ← Home page
-│   │   ├── Users.jsx         ← User CRUD interface
-│   │   └── Settings.jsx      ← Settings & preferences
+│   │   ├── Dashboard.tsx     ← Home page
+│   │   ├── Users.tsx         ← User CRUD interface
+│   │   └── Settings.tsx      ← Settings & preferences
 │   ├── services/
-│   │   ├── api.js            ← Axios instance
-│   │   └── userService.js    ← User API calls
-│   ├── App.jsx               ← Main app component
-│   ├── main.jsx              ← Entry point
+│   │   ├── api.ts            ← Axios instance
+│   │   └── userService.ts    ← User API calls
+│   ├── App.tsx               ← Main app component
+│   ├── main.tsx              ← Entry point
 │   └── index.css             ← Global styles + Tailwind
 ├── index.html
 ├── package.json
@@ -191,7 +191,7 @@ colors: {
 ### Add New Theme
 
 ```jsx
-// ThemeContext.jsx
+// ThemeContext.tsx
 const themes = ['light', 'dark', 'blue']
 
 // Apply theme class to html
@@ -201,7 +201,7 @@ root.classList.add(theme)
 ### Create Custom Component
 
 ```jsx
-// components/MyComponent.jsx
+// components/MyComponent.tsx
 export const MyComponent = ({ children }) => (
   <div className="bg-white dark:bg-dark-100 rounded-lg p-4">
     {children}

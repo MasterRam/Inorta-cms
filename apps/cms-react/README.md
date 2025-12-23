@@ -20,25 +20,25 @@ Modern React frontend for Inorta CMS with Tailwind CSS and theme switching.
 cms-react/
 ├── src/
 │   ├── components/          # Reusable UI components
-│   │   ├── Alert.jsx
-│   │   ├── Button.jsx
-│   │   ├── Card.jsx
-│   │   ├── Input.jsx
-│   │   ├── Loading.jsx
-│   │   ├── Modal.jsx
-│   │   ├── Navbar.jsx
-│   │   └── ThemeToggle.jsx
+│   │   ├── Alert.tsx
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── Input.tsx
+│   │   ├── Loading.tsx
+│   │   ├── Modal.tsx
+│   │   ├── Navbar.tsx
+│   │   └── ThemeToggle.tsx
 │   ├── context/            # React contexts
-│   │   └── ThemeContext.jsx
+│   │   └── ThemeContext.tsx
 │   ├── pages/              # Page components
-│   │   ├── Dashboard.jsx
-│   │   ├── Users.jsx
-│   │   └── Settings.jsx
+│   │   ├── Dashboard.tsx
+│   │   ├── Users.tsx
+│   │   └── Settings.tsx
 │   ├── services/           # API services
-│   │   ├── api.js
-│   │   └── userService.js
-│   ├── App.jsx             # Main app component
-│   ├── main.jsx            # App entry point
+│   │   ├── api.ts
+│   │   └── userService.ts
+│   ├── App.tsx             # Main app component
+│   ├── main.tsx            # App entry point
 │   └── index.css           # Global styles with Tailwind
 ├── index.html
 ├── package.json
@@ -80,6 +80,20 @@ npm run dev
 ```
 
 The app will be available at http://localhost:3000
+
+### Admin Routes
+
+All administration pages live under the `/admin` path and are protected behind a minimal demo login:
+
+- `/admin` - Dashboard (requires login)
+- `/admin/users` - User management (CRUD)
+- `/admin/settings` - Site settings
+
+The root `/` redirects to `/admin`.
+
+### Login (Development Demo)
+
+A basic login page is available at `/login`. It accepts an email and stores a demo token in localStorage to simulate authentication. In Phase 2 we can replace this with real JWT authentication and protected routes tied to backend auth.
 
 ## Available Scripts
 
@@ -318,18 +332,18 @@ colors: {
 
 ### Add New Route
 
-1. Create page component in `src/pages/MyPage.jsx`
-2. Add route in `src/App.jsx`:
+1. Create page component in `src/pages/MyPage.tsx`
+2. Add route in `src/App.tsx`:
 
 ```jsx
 <Route path="/mypage" element={<MyPage />} />
 ```
 
-3. Add navigation link in `src/components/Navbar.jsx`
+3. Add navigation link in `src/components/Navbar.tsx`
 
 ### Create Custom Theme
 
-In `src/context/ThemeContext.jsx`, extend to support more themes:
+In `src/context/ThemeContext.tsx`, extend to support more themes:
 
 ```jsx
 const [theme, setTheme] = useState('light') // or 'dark', 'blue', 'green'

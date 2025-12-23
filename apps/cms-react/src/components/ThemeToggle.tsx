@@ -1,7 +1,8 @@
+import React from 'react'
 import { IconSun, IconMoon } from '@tabler/icons-react'
 import { useTheme } from '@/context/ThemeContext'
 
-export const ThemeToggle = () => {
+export const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme()
 
   return (

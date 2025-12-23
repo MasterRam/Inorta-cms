@@ -121,29 +121,29 @@ Inorta-cms/
 │       ├── src/
 │       │   │
 │       │   ├── components/
-│       │   │   ├── Alert.jsx      ← Alert messages
-│       │   │   ├── Button.jsx     ← Button component
-│       │   │   ├── Card.jsx       ← Card container
-│       │   │   ├── Input.jsx      ← Form input
-│       │   │   ├── Loading.jsx    ← Loading spinner
-│       │   │   ├── Modal.jsx      ← Modal dialog
-│       │   │   ├── Navbar.jsx     ← Navigation bar
-│       │   │   └── ThemeToggle.jsx ← Theme switcher
+│       │   │   ├── Alert.tsx      ← Alert messages
+│       │   │   ├── Button.tsx     ← Button component
+│       │   │   ├── Card.tsx       ← Card container
+│       │   │   ├── Input.tsx      ← Form input
+│       │   │   ├── Loading.tsx    ← Loading spinner
+│       │   │   ├── Modal.tsx      ← Modal dialog
+│       │   │   ├── Navbar.tsx     ← Navigation bar
+│       │   │   └── ThemeToggle.tsx ← Theme switcher
 │       │   │
 │       │   ├── context/
-│       │   │   └── ThemeContext.jsx ← Theme management
+│       │   │   └── ThemeContext.tsx ← Theme management
 │       │   │
 │       │   ├── pages/
-│       │   │   ├── Dashboard.jsx  ← Home page
-│       │   │   ├── Users.jsx      ← User CRUD
-│       │   │   └── Settings.jsx   ← Settings page
+│       │   │   ├── Dashboard.tsx  ← Home page
+│       │   │   ├── Users.tsx      ← User CRUD
+│       │   │   └── Settings.tsx   ← Settings page
 │       │   │
 │       │   ├── services/
-│       │   │   ├── api.js         ← Axios instance
-│       │   │   └── userService.js ← User API calls
+│       │   │   ├── api.ts         ← Axios instance
+│       │   │   └── userService.ts ← User API calls
 │       │   │
-│       │   ├── App.jsx            ← Main app component
-│       │   ├── main.jsx           ← Entry point
+│       │   ├── App.tsx            ← Main app component
+│       │   ├── main.tsx           ← Entry point
 │       │   └── index.css          ← Global styles + Tailwind
 │       │
 │       ├── 📄 .env                ← Environment config
@@ -279,9 +279,9 @@ npm run build
 | Database migrations | ✅ | `/alembic/` |
 | React frontend | ✅ | `/apps/cms-react/` |
 | Tailwind CSS | ✅ | `tailwind.config.js` |
-| Theme switching | ✅ | `context/ThemeContext.jsx` |
+| Theme switching | ✅ | `context/ThemeContext.tsx` |
 | Tabler Icons | ✅ | `package.json` |
-| User UI | ✅ | `pages/Users.jsx` |
+| User UI | ✅ | `pages/Users.tsx` |
 | API integration | ✅ | `services/` |
 | Documentation | ✅ | Multiple README files |
 

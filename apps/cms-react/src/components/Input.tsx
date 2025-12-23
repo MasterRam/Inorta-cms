@@ -1,4 +1,11 @@
-export const Input = ({ label, error, ...props }) => {
+import React from 'react'
+
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  label?: string
+  error?: string | null
+}
+
+export const Input: React.FC<InputProps> = ({ label, error, ...props }) => {
   return (
     <div className="mb-4">
       {label && <label className="label">{label}</label>}

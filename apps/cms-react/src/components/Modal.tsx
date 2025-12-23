@@ -1,6 +1,14 @@
+import React from 'react'
 import { IconX } from '@tabler/icons-react'
 
-export const Modal = ({ isOpen, onClose, title, children }) => {
+type ModalProps = {
+  isOpen: boolean
+  onClose: () => void
+  title?: string
+  children?: React.ReactNode
+}
+
+export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null
 
   return (
@@ -11,6 +19,7 @@ export const Modal = ({ isOpen, onClose, title, children }) => {
           <button
             onClick={onClose}
             className="p-1 rounded hover:bg-gray-100 dark:hover:bg-dark-200 transition-colors"
+            aria-label="Close"
           >
             <IconX size={20} className="text-gray-500 dark:text-dark-500" />
           </button>

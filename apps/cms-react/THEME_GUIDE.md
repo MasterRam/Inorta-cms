@@ -9,7 +9,7 @@ This guide explains how the **class-based theme switching** works in Inorta CMS.
 ### 1. Theme Context (State Management)
 
 ```jsx
-// src/context/ThemeContext.jsx
+// src/context/ThemeContext.tsx
 const [theme, setTheme] = useState('light') // or 'dark'
 
 // HTML element gets the theme class
@@ -57,8 +57,8 @@ function MyComponent() {
 
 ### The Toggle Button
 
-```jsx
-// components/ThemeToggle.jsx
+```tsx
+// components/ThemeToggle.tsx
 import { IconSun, IconMoon } from '@tabler/icons-react'
 import { useTheme } from '@/context/ThemeContext'
 
@@ -117,7 +117,7 @@ theme: {
 ### 2. Create Custom Component
 
 ```jsx
-// components/MyCard.jsx
+// components/MyCard.tsx
 export const MyCard = ({ children, title }) => {
   return (
     <div className="bg-white dark:bg-dark-100 rounded-lg shadow-md p-6 border border-gray-200 dark:border-dark-200">
@@ -216,8 +216,8 @@ The project includes ready-to-use component classes:
 
 ### 1. Extend Theme Context
 
-```jsx
-// ThemeContext.jsx
+```tsx
+// ThemeContext.tsx
 const [theme, setTheme] = useState('light') // 'light', 'dark', 'blue', 'green'
 
 useEffect(() => {
@@ -269,8 +269,8 @@ module.exports = {
 
 The theme is automatically saved to localStorage:
 
-```jsx
-// ThemeContext.jsx
+```tsx
+// ThemeContext.tsx
 useEffect(() => {
   localStorage.setItem('theme', theme)
 }, [theme])

@@ -1,8 +1,8 @@
-import axios from 'axios'
+import axios, { AxiosInstance, InternalAxiosRequestConfig } from 'axios'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 
-const api = axios.create({
+export const api: AxiosInstance = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
@@ -11,32 +11,26 @@ const api = axios.create({
 
 // Request interceptor
 api.interceptors.request.use(
-  (config) => {
-    // You can add auth tokens here if needed
+  (config: InternalAxiosRequestConfig) => {
+    // Add auth tokens here if needed
     // const token = localStorage.getItem('token')
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`
+    // if (token && config.headers) {
+    //   (config.headers as Record<string, string>).Authorization = `Bearer ${token}`
     // }
     return config
   },
-  (error) => {
-    return Promise.reject(error)
-  }
+  (error) => Promise.reject(error)
 )
 
 // Response interceptor
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Handle errors globally
     if (error.response) {
-      // Server responded with error
       console.error('API Error:', error.response.data)
     } else if (error.request) {
-      // Request made but no response
       console.error('Network Error:', error.request)
     } else {
-      // Something else happened
       console.error('Error:', error.message)
     }
     return Promise.reject(error)
